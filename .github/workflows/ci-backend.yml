@@ -8,19 +8,20 @@ on:
       - 'sgcmapi/**'
 jobs:
   compile:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with: 
-          java-version: '17'
-          distribution: 'temurin'
-      - name: Maven Compile/Test
-        working-directory: sgcmapi/
-        run: mvn compile
-
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - name: Set up JDK 17
+          uses: actions/setup-java@v3
+          with: 
+            java-version: '17'
+            distribution: 'temurin'
+        - name: Maven Compile/Teste
+          working-directory: sgcmapi/
+          run: mvn compile
+    
   test:
+    needs: compile
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
